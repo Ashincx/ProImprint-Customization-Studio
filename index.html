@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ProImprint Customization Studio v2.0 - 40 Oz Safari Tumbler</title>
+  <meta name="description" content="Design and customize your 40 Oz Safari Tumbler with live 3D preview, instant vector logo checks, custom typography, and real-time wholesale tier pricing.">
+  
+  <!-- Google Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:ital,wght@0,700;1,700&family=Montserrat:wght@700;900&family=Oswald:wght@600&family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  
+  <!-- Custom Design System Styles -->
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+  <!-- ======================================================================
+       1. Top Header Bar
+       ====================================================================== -->
+  <header class="top-header" data-purpose="top-navigation">
+    <div class="header-left">
+      <a href="#" class="brand-logo-container" aria-label="ProImprint Customization Home">
+        <img src="https://lh3.googleusercontent.com/aida/AP1WRLtoSkh_KbHapaKuGgs8SGA6qZxRccuM_XzHGFcq-Tkl3tEj6tGGqPYoVGnTj9vCZ7ooiJbFbPQ0RxIq70-pARN_vyaswszjr_KOhSbX8Nj2pZE6QyjBH8YYX5HK_K6UUS9xtvyDAFxC8xOEAjio0HFmrdMN-7jA8yzlNkbzHnvn3W-EdRzQHxVjXjby-GRnPNMmVbQB-pxL9crx3bGIVtE0MoSnlkrfl-sPoBnUZNlV28Ww31639eSla1E" alt="ProImprint Logo" class="brand-logo-img">
+        <div class="header-title-badge">
+          <span class="header-title">Customizer Studio</span>
+          <span class="version-badge">v2.0 Pro</span>
+        </div>
+      </a>
+    </div>
+
+    <nav class="header-nav" aria-label="Main Navigation">
+      <a href="#" class="header-nav-link active" id="nav-customizer">Live Studio</a>
+      <a href="#" class="header-nav-link" id="nav-pricing">Wholesale Tiers</a>
+      <a href="#" class="header-nav-link" id="nav-proofs">Saved Proofs (0)</a>
+      <a href="#" class="header-nav-link" id="nav-specs">Product Spec Sheet</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="btn-icon" id="btn-save-project" title="Save Project to Cloud">
+        <span class="material-symbols-outlined">cloud_upload</span>
+      </button>
+      <button class="btn-icon" id="btn-share-link" title="Share Design Link">
+        <span class="material-symbols-outlined">share</span>
+      </button>
+      <button class="btn-icon" id="btn-cart" title="View Cart & Quote">
+        <span class="material-symbols-outlined">shopping_cart</span>
+        <span class="cart-badge" id="cart-count">0</span>
+      </button>
+      <div class="header-user-avatar" title="Stitch Account ID: 9946207634550902794">
+        PI
+      </div>
+    </div>
+  </header>
+
+  <!-- ======================================================================
+       2. Main Workspace Layout (Canvas + Sidebar)
+       ====================================================================== -->
+  <main class="main-workspace" data-purpose="customization-workspace">
+
+    <!-- Left Column: 3D / Interactive Canvas -->
+    <section class="canvas-section" id="canvas-section">
+      
+      <!-- Safety Net Real-time Status Banner -->
+      <div class="safety-net-banner warning" id="safety-banner">
+        <span class="material-symbols-outlined safety-net-icon" id="safety-icon">warning</span>
+        <span class="safety-net-text" id="safety-message">Draft Mode: Select or upload artwork to begin vector quality inspection.</span>
+        <button class="safety-net-action" id="safety-btn">Auto-Vectorize</button>
+      </div>
+
+      <!-- Sustainability & Eco Score Badge -->
+      <div class="eco-badge" id="eco-badge" title="Click for complete sustainability certificate">
+        <span class="material-symbols-outlined" style="color: var(--tertiary-container); font-variation-settings: 'FILL' 1;">eco</span>
+        <span class="eco-badge-text">Eco Score: A+ (100% Recycled Steel)</span>
+      </div>
+
+      <!-- Central Interactive Product Stage -->
+      <div class="product-stage" id="product-stage">
+        <div class="product-tumbler-wrapper" id="tumbler-wrapper">
+          <!-- Tumbler Base Image -->
+          <img src="https://lh3.googleusercontent.com/aida/AP1WRLt5cRF82_6FlvrwLrkFymCfmbuSX7O1Bw3q0sQ3bFv97RLG2FofWBBIBzVlkov5ozf4t7rWwrIJaZbKLiRLFpfkWdoTtjC34EI1AA3SljYNpOSJEUUSwTdVBHENNfT0DymnNYvwJ2wx7BV3Yq94_e29EwGXPbeu22yWN7iYeFlU_zCrKyGJBGOf182laAt7oBT93FUUSKCAk1fvudNvDCbp7m9p8cdFhRXoGShxeTAJxHR9_C7YGfhq3A" alt="40 Oz Safari Tumbler Preview" class="tumbler-img" id="tumbler-base-img">
+          
+          <!-- Realistic Color Tint Overlay -->
+          <div class="tumbler-tint-layer" id="tumbler-tint" style="background-color: transparent;"></div>
+
+          <!-- Live Draggable Imprint Area Box -->
+          <div class="imprint-boundary-box show-grid" id="imprint-box" title="Drag to adjust imprint alignment on tumbler">
+            <span class="imprint-label-guide">Imprint Area: 3.5" W x 4.0" H</span>
+            <img src="" alt="Live Preview Logo" class="preview-logo-item" id="preview-logo" style="display: none;">
+            <div class="preview-text-item" id="preview-text">YOUR LOGO / TEXT</div>
+            <div class="preview-placeholder" id="preview-placeholder" style="display: none;">Drop or Pick Artwork</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Sizing Reference Widget -->
+      <div class="sizing-reference" id="sizing-widget">
+        <div class="size-compare-item">
+          <span class="size-compare-title">Smartphone</span>
+          <div class="size-phone-box">
+            <div class="size-phone-notch"></div>
+          </div>
+          <span class="size-phone-label">6.1"</span>
+        </div>
+        <div class="size-compare-item">
+          <span class="size-compare-title">Safari Tumbler</span>
+          <div class="size-tumbler-box">
+            <div class="size-tumbler-rim"></div>
+            <div class="size-tumbler-handle"></div>
+          </div>
+          <span class="size-tumbler-label">40 oz (11.5")</span>
+        </div>
+      </div>
+
+      <!-- Viewport Glassmorphism Controls -->
+      <div class="viewport-controls">
+        <button class="glass-btn" id="btn-zoom-in" title="Zoom In (+)">
+          <span class="material-symbols-outlined">zoom_in</span>
+        </button>
+        <button class="glass-btn" id="btn-zoom-out" title="Zoom Out (-)">
+          <span class="material-symbols-outlined">zoom_out</span>
+        </button>
+        <button class="glass-btn active" id="btn-toggle-grid" title="Toggle Target Imprint Grid">
+          <span class="material-symbols-outlined">grid_on</span>
+        </button>
+        <button class="glass-btn" id="btn-toggle-size" title="Toggle Reference Sizing Scale">
+          <span class="material-symbols-outlined">straighten</span>
+        </button>
+        <button class="glass-btn" id="btn-reset-view" title="Reset Viewport Position">
+          <span class="material-symbols-outlined">restart_alt</span>
+        </button>
+      </div>
+
+    </section>
+
+    <!-- Right Column: Customization Sidebar -->
+    <aside class="sidebar-section" id="sidebar-section" data-purpose="customization-controls">
+      
+      <!-- Product Summary Header -->
+      <div class="sidebar-header">
+        <div class="product-thumb-box">
+          <img src="https://lh3.googleusercontent.com/aida/AP1WRLt5cRF82_6FlvrwLrkFymCfmbuSX7O1Bw3q0sQ3bFv97RLG2FofWBBIBzVlkov5ozf4t7rWwrIJaZbKLiRLFpfkWdoTtjC34EI1AA3SljYNpOSJEUUSwTdVBHENNfT0DymnNYvwJ2wx7BV3Yq94_e29EwGXPbeu22yWN7iYeFlU_zCrKyGJBGOf182laAt7oBT93FUUSKCAk1fvudNvDCbp7m9p8cdFhRXoGShxeTAJxHR9_C7YGfhq3A" alt="Thumbnail" class="product-thumb-img">
+        </div>
+        <div class="product-info">
+          <h1>40 Oz Safari Insulated Tumbler</h1>
+          <div class="product-meta">
+            <span class="product-sku">SKU: PIM-SAF40</span>
+            <span class="product-rating">★ 4.9 <span style="color: var(--text-muted); font-weight: 400;">(1,420 reviews)</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Customization Tabs Navigation -->
+      <div class="tabs-header" id="tabs-header">
+        <button class="tab-btn active" data-tab="tab-artwork">
+          <span class="material-symbols-outlined">image</span>
+          Artwork
+        </button>
+        <button class="tab-btn" data-tab="tab-text">
+          <span class="material-symbols-outlined">title</span>
+          Text
+        </button>
+        <button class="tab-btn" data-tab="tab-color">
+          <span class="material-symbols-outlined">palette</span>
+          Color
+        </button>
+        <button class="tab-btn" data-tab="tab-placement">
+          <span class="material-symbols-outlined">layers</span>
+          Placement
+        </button>
+      </div>
+
+      <!-- Tabs Content Area -->
+      <div class="tabs-content-area">
+        
+        <!-- TAB 1: LOGO / ARTWORK -->
+        <div class="tab-pane active" id="tab-artwork">
+          
+          <!-- Upload Area -->
+          <div class="upload-dropzone" id="upload-dropzone" title="Click or Drag file to upload">
+            <input type="file" id="file-input" accept="image/png,image/jpeg,image/svg+xml,.ai,.eps" style="display: none;">
+            <div class="upload-icon-circle">
+              <span class="material-symbols-outlined">upload_file</span>
+            </div>
+            <span class="upload-title">Upload Custom Logo / Art</span>
+            <span class="upload-subtitle">SVG, PNG, AI, EPS • High-Res Vector Preferred<br>(Max file size: 50MB)</span>
+          </div>
+
+          <!-- Quick Sample Professional Logos -->
+          <div>
+            <div class="section-title">
+              <span>Try Instant Sample Logos</span>
+              <span style="color: var(--primary-container); font-size: 11px; text-transform: none;">1-Click Preview</span>
+            </div>
+            <div class="sample-grid">
+              <div class="sample-asset-card" data-logo-type="mountain" data-name="Summit Mountain Blue">
+                <div class="sample-icon-box" style="background: #e0f2fe; color: #0284c7;">🏔️</div>
+                <div class="sample-asset-info">
+                  <div class="sample-name">Summit Blue</div>
+                  <div class="sample-badge">✓ 300dpi Vector</div>
+                </div>
+              </div>
+              <div class="sample-asset-card" data-logo-type="tech" data-name="Apex Spark Tech Gold">
+                <div class="sample-icon-box" style="background: #fef3c7; color: #d97706;">⚡</div>
+                <div class="sample-asset-info">
+                  <div class="sample-name">Apex Spark</div>
+                  <div class="sample-badge">✓ 300dpi Vector</div>
+                </div>
+              </div>
+              <div class="sample-asset-card" data-logo-type="eco" data-name="GreenLeaf Organics">
+                <div class="sample-icon-box" style="background: #d1fae5; color: #059669;">🌿</div>
+                <div class="sample-asset-info">
+                  <div class="sample-name">GreenLeaf Co.</div>
+                  <div class="sample-badge">✓ 300dpi Vector</div>
+                </div>
+              </div>
+              <div class="sample-asset-card" data-logo-type="shield" data-name="ProImprint Shield Crest">
+                <div class="sample-icon-box" style="background: #fee2e2; color: #dc2626;">🛡️</div>
+                <div class="sample-asset-info">
+                  <div class="sample-name">Shield Crest</div>
+                  <div class="sample-badge">✓ 300dpi Vector</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Active Uploaded / Selected Assets List -->
+          <div>
+            <div class="section-title">
+              <span>Active Stage Assets</span>
+              <span id="asset-count-badge">1 Active</span>
+            </div>
+            <div id="assets-list-container">
+              <div class="asset-item-card is-ready" id="current-asset-card">
+                <div class="asset-status-bar"></div>
+                <div class="asset-preview-box">
+                  <span class="material-symbols-outlined" style="color: var(--primary-container);">verified</span>
+                </div>
+                <div class="asset-details">
+                  <div class="asset-name" id="current-asset-name">Custom Typography</div>
+                  <div class="asset-dpi-status" id="current-asset-status">
+                    <span class="material-symbols-outlined" style="font-size: 14px;">check_circle</span>
+                    Print Ready: 100% Vector
+                  </div>
+                </div>
+                <button class="btn-remove-asset" id="btn-clear-artwork" title="Clear / Reset Asset">
+                  <span class="material-symbols-outlined">delete</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Print Readiness Quality Meter -->
+          <div class="readiness-container">
+            <div class="readiness-header">
+              <span class="readiness-title">Overall Print Readiness</span>
+              <span class="readiness-score" id="readiness-score-val">100% (Vector Perfect)</span>
+            </div>
+            <div class="readiness-track">
+              <div class="readiness-bar" id="readiness-progress" style="width: 100%; background: var(--success-green);"></div>
+            </div>
+          </div>
+
+          <!-- Free Design Assistance CTA -->
+          <button class="btn-design-help" id="btn-request-art-help">
+            <span class="material-symbols-outlined">support_agent</span>
+            Get Free Design Help (15-Min Turnaround)
+          </button>
+
+        </div>
+
+        <!-- TAB 2: TEXT CONTROLS -->
+        <div class="tab-pane" id="tab-text">
+          
+          <div class="form-group">
+            <label class="form-label" for="custom-text-input">Custom Imprint Text</label>
+            <input type="text" id="custom-text-input" class="custom-input" value="YOUR LOGO / TEXT" placeholder="Enter company name, event, or slogan...">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="font-family-select">Font Family</label>
+            <select id="font-family-select" class="custom-select">
+              <option value="'Inter', sans-serif">Inter (Modern Clean)</option>
+              <option value="'JetBrains Mono', monospace">JetBrains Mono (Technical / SKU)</option>
+              <option value="'Playfair Display', serif">Playfair Display (Elegant Serif)</option>
+              <option value="'Montserrat', sans-serif">Montserrat (Bold Corporate)</option>
+              <option value="'Oswald', sans-serif">Oswald (Tall Impact)</option>
+              <option value="'Pacifico', cursive">Pacifico (Friendly Script)</option>
+            </select>
+          </div>
+
+          <!-- Text Size & Letter Spacing Sliders -->
+          <div class="slider-group">
+            <div class="slider-header">
+              <label class="form-label" for="font-size-slider">Font Size</label>
+              <span class="slider-value" id="font-size-val">20px</span>
+            </div>
+            <input type="range" id="font-size-slider" class="custom-slider" min="12" max="48" step="1" value="20">
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-header">
+              <label class="form-label" for="letter-spacing-slider">Letter Spacing</label>
+              <span class="slider-value" id="letter-spacing-val">0px</span>
+            </div>
+            <input type="range" id="letter-spacing-slider" class="custom-slider" min="-2" max="10" step="0.5" value="0">
+          </div>
+
+          <!-- Formatting Buttons (Bold, Italic, Uppercase, Arch/Curve) -->
+          <div class="form-group">
+            <label class="form-label">Text Style & Arching</label>
+            <div class="format-buttons-grid">
+              <button class="btn-format active" id="btn-format-bold" title="Bold">B</button>
+              <button class="btn-format" id="btn-format-italic" title="Italic" style="font-style: italic;">I</button>
+              <button class="btn-format active" id="btn-format-uppercase" title="All Caps">AA</button>
+              <button class="btn-format" id="btn-format-arch" title="Curved Arch Effect">
+                <span class="material-symbols-outlined" style="font-size: 18px;">abc</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Imprint Text Color Swatches -->
+          <div class="form-group">
+            <label class="form-label">Text & Logo Color Overlay</label>
+            <div class="color-swatches-grid" id="text-color-swatches">
+              <div class="color-swatch-item active" data-color="#0F172A" style="background: #0F172A;" title="Matte Obsidian Black">
+                <span class="material-symbols-outlined">check</span>
+              </div>
+              <div class="color-swatch-item" data-color="#0056b3" style="background: #0056b3;" title="Primary Brand Blue">
+                <span class="material-symbols-outlined">check</span>
+              </div>
+              <div class="color-swatch-item" data-color="#E31837" style="background: #E31837;" title="Expedition Crimson">
+                <span class="material-symbols-outlined">check</span>
+              </div>
+              <div class="color-swatch-item" data-color="#004c32" style="background: #004c32;" title="Pine Forest Green">
+                <span class="material-symbols-outlined">check</span>
+              </div>
+              <div class="color-swatch-item" data-color="#D97706" style="background: #D97706;" title="Desert Gold">
+                <span class="material-symbols-outlined">check</span>
+              </div>
+              <div class="color-swatch-item light-check" data-color="#FFFFFF" style="background: #FFFFFF;" title="Laser Engraved White/Silver">
+                <span class="material-symbols-outlined">check</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- TAB 3: COLOR & FINISH -->
+        <div class="tab-pane" id="tab-color">
+          
+          <div>
+            <div class="section-title">
+              <span>Tumbler Body Color</span>
+              <span id="active-tumbler-color-name" style="color: var(--primary-container); font-weight: 700;">Safari Stainless</span>
+            </div>
+            <div class="tumbler-colors-grid" id="tumbler-colors-grid">
+              <div class="tumbler-color-card active" data-tint="transparent" data-name="Safari Stainless">
+                <div class="tumbler-swatch-circle" style="background: linear-gradient(135deg, #e2e8f0, #cbd5e1);"></div>
+                <span class="tumbler-color-name">Safari Stainless</span>
+              </div>
+              <div class="tumbler-color-card" data-tint="rgba(15, 23, 42, 0.45)" data-name="Midnight Matte">
+                <div class="tumbler-swatch-circle" style="background: #0F172A;"></div>
+                <span class="tumbler-color-name">Midnight Matte</span>
+              </div>
+              <div class="tumbler-color-card" data-tint="rgba(0, 86, 179, 0.42)" data-name="Royal Safari Blue">
+                <div class="tumbler-swatch-circle" style="background: #0056b3;"></div>
+                <span class="tumbler-color-name">Safari Blue</span>
+              </div>
+              <div class="tumbler-color-card" data-tint="rgba(227, 24, 55, 0.40)" data-name="Expedition Crimson">
+                <div class="tumbler-swatch-circle" style="background: #E31837;"></div>
+                <span class="tumbler-color-name">Crimson Red</span>
+              </div>
+              <div class="tumbler-color-card" data-tint="rgba(0, 76, 50, 0.42)" data-name="Pine Forest Green">
+                <div class="tumbler-swatch-circle" style="background: #004c32;"></div>
+                <span class="tumbler-color-name">Forest Green</span>
+              </div>
+              <div class="tumbler-color-card" data-tint="rgba(245, 158, 11, 0.38)" data-name="Sunset Amber Gold">
+                <div class="tumbler-swatch-circle" style="background: #F59E0B;"></div>
+                <span class="tumbler-color-name">Sunset Gold</span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="section-title">
+              <span>Imprint Application Method</span>
+              <span style="color: var(--text-muted); font-size: 11px;">Select Technology</span>
+            </div>
+            <div class="imprint-method-list">
+              <div class="method-option-card active" data-method="laser">
+                <input type="radio" name="imprint_method" class="method-radio" checked>
+                <div class="method-info">
+                  <h4>Laser Engraved (Most Durable & Permanent)</h4>
+                  <p>Precision CO2 laser removes exterior powder coat to reveal crisp stainless steel base. Dishwasher safe & scratch proof.</p>
+                </div>
+              </div>
+              <div class="method-option-card" data-method="screen">
+                <input type="radio" name="imprint_method" class="method-radio">
+                <div class="method-info">
+                  <h4>1-Color Screen Print (+ $0.00)</h4>
+                  <p>High-opacity industrial enamel ink baked at 350°F for bold single-color logos.</p>
+                </div>
+              </div>
+              <div class="method-option-card" data-method="uv">
+                <input type="radio" name="imprint_method" class="method-radio">
+                <div class="method-info">
+                  <h4>Full-Color Digital UV Print (+ $1.25/unit)</h4>
+                  <p>Photographic quality full-spectrum UV digital print with textured tactile finish.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- TAB 4: PLACEMENT & TECHNICAL SPECS -->
+        <div class="tab-pane" id="tab-placement">
+          
+          <div>
+            <div class="section-title">
+              <span>Imprint Side Placement</span>
+            </div>
+            <div class="placement-sides-grid">
+              <button class="btn-placement-side active" data-side="Side 1 (Front - Logo View)">
+                <span class="material-symbols-outlined">front_hand</span>
+                Side 1 (Front Display)
+              </button>
+              <button class="btn-placement-side" data-side="Side 2 (Back - Opposite Handle)">
+                <span class="material-symbols-outlined">flip_to_back</span>
+                Side 2 (Back Display)
+              </button>
+              <button class="btn-placement-side" data-side="Dual Side Imprint (+ $1.50/unit)" style="grid-column: span 2;">
+                <span class="material-symbols-outlined">repeat</span>
+                Dual Side Imprint (+ $1.50/unit)
+              </button>
+            </div>
+          </div>
+
+          <!-- Alignment Helpers -->
+          <div>
+            <div class="section-title">
+              <span>Precision Alignment Helpers</span>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
+              <button class="btn-secondary" id="btn-align-center-h" style="font-size: 12px; padding: 10px;">
+                Center Horizontal
+              </button>
+              <button class="btn-secondary" id="btn-align-center-v" style="font-size: 12px; padding: 10px;">
+                Center Vertical
+              </button>
+            </div>
+          </div>
+
+          <!-- Technical Spec Sheet Accordion -->
+          <div>
+            <div class="section-title">
+              <span>Tumbler Specifications & Construction</span>
+            </div>
+            <div class="specs-accordion">
+              <div class="spec-item">
+                <div class="spec-header" onclick="toggleSpec(this)">
+                  <span>Capacity & Dimensions</span>
+                  <span class="material-symbols-outlined">expand_more</span>
+                </div>
+                <div class="spec-body" style="display: block;">
+                  • <strong>Volume:</strong> 40 Fluid Ounces (1.18 Liters)<br>
+                  • <strong>Height:</strong> 11.5 inches (29.2 cm)<br>
+                  • <strong>Base Diameter:</strong> 3.1 inches (Fits standard car cup holders)<br>
+                  • <strong>Weight (Empty):</strong> 1.35 lbs
+                </div>
+              </div>
+              <div class="spec-item">
+                <div class="spec-header" onclick="toggleSpec(this)">
+                  <span>Thermal Insulation Tech</span>
+                  <span class="material-symbols-outlined">expand_more</span>
+                </div>
+                <div class="spec-body" style="display: none;">
+                  • Double-wall vacuum insulated copper-lined 18/8 food-grade stainless steel.<br>
+                  • Keeps drinks ice cold for up to 34 hours, or piping hot for 12 hours.<br>
+                  • Condensation-free sweatproof exterior coating.
+                </div>
+              </div>
+              <div class="spec-item">
+                <div class="spec-header" onclick="toggleSpec(this)">
+                  <span>Lid, Straw & Handle Specs</span>
+                  <span class="material-symbols-outlined">expand_more</span>
+                </div>
+                <div class="spec-body" style="display: none;">
+                  • 3-position leak-resistant rotating cover lid (Straw opening, Drink spout, Full cover closure).<br>
+                  • Includes reusable tritan clear straw and ergonomic soft-grip comfort handle.
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Pricing & Checkout Footer (Fixed Bottom of Sidebar) -->
+      <div class="checkout-footer">
+        
+        <!-- Tier Mini Table -->
+        <div class="tier-discounts-box" id="tier-table">
+          <div class="tier-item active" data-min="25" data-price="7.99">
+            <span class="tier-qty">25-99</span>
+            <span class="tier-price">$7.99</span>
+          </div>
+          <div class="tier-item" data-min="100" data-price="6.49">
+            <span class="tier-qty">100-249</span>
+            <span class="tier-price">$6.49</span>
+          </div>
+          <div class="tier-item" data-min="250" data-price="5.29">
+            <span class="tier-qty">250-499</span>
+            <span class="tier-price">$5.29</span>
+          </div>
+          <div class="tier-item" data-min="500" data-price="4.49">
+            <span class="tier-qty">500+ units</span>
+            <span class="tier-price">$4.49</span>
+          </div>
+        </div>
+
+        <div class="pricing-summary-row">
+          <div class="pricing-qty-control">
+            <span class="qty-label">Order Quantity</span>
+            <div class="qty-input-wrapper">
+              <button class="btn-qty" id="btn-qty-minus">−</button>
+              <input type="number" class="qty-input" id="qty-input" value="25" min="25" max="10000" step="5">
+              <button class="btn-qty" id="btn-qty-plus">+</button>
+            </div>
+          </div>
+          <div class="pricing-total-box">
+            <div class="total-price" id="total-price-display">$199.75</div>
+            <span class="unit-breakdown" id="unit-breakdown-display">25 units @ $7.99/unit</span>
+          </div>
+        </div>
+
+        <button class="btn-proceed-proof" id="btn-proceed-proof">
+          <span>Proceed to Digital Proof</span>
+          <span class="material-symbols-outlined">verified_user</span>
+        </button>
+      </div>
+
+    </aside>
+
+  </main>
+
+  <!-- ======================================================================
+       3. Digital Proof & Order Approval Modal
+       ====================================================================== -->
+  <div class="modal-overlay" id="proof-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modal-title">Official Digital Proof Confirmation</h2>
+        <button class="btn-close-modal" id="btn-close-proof" aria-label="Close Modal">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="proof-preview-card">
+          <div class="proof-img-box">
+            <img src="https://lh3.googleusercontent.com/aida/AP1WRLt5cRF82_6FlvrwLrkFymCfmbuSX7O1Bw3q0sQ3bFv97RLG2FofWBBIBzVlkov5ozf4t7rWwrIJaZbKLiRLFpfkWdoTtjC34EI1AA3SljYNpOSJEUUSwTdVBHENNfT0DymnNYvwJ2wx7BV3Yq94_e29EwGXPbeu22yWN7iYeFlU_zCrKyGJBGOf182laAt7oBT93FUUSKCAk1fvudNvDCbp7m9p8cdFhRXoGShxeTAJxHR9_C7YGfhq3A" alt="Proof Summary" style="max-height: 120px; object-fit: contain;">
+          </div>
+          <div class="proof-summary-list">
+            <div class="proof-row">
+              <span class="proof-label">Product Name:</span>
+              <span class="proof-val">40 Oz Safari Tumbler (SKU: PIM-SAF40)</span>
+            </div>
+            <div class="proof-row">
+              <span class="proof-label">Tumbler Body Color:</span>
+              <span class="proof-val" id="proof-color-name">Safari Stainless</span>
+            </div>
+            <div class="proof-row">
+              <span class="proof-label">Imprint Method & Side:</span>
+              <span class="proof-val" id="proof-method-side">Laser Engraved • Side 1 (Front Display)</span>
+            </div>
+            <div class="proof-row">
+              <span class="proof-label">Custom Content:</span>
+              <span class="proof-val" id="proof-content">YOUR LOGO / TEXT</span>
+            </div>
+            <div class="proof-row">
+              <span class="proof-label">Print Readiness:</span>
+              <span class="proof-val" style="color: var(--success-green);">✓ 100% Verified Vector Ready</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: var(--surface-container-low); padding: 16px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 14px; margin-bottom: 6px;">
+            <span>Wholesale Order Breakdown:</span>
+            <span id="proof-total-display" style="color: var(--primary-container);">$199.75</span>
+          </div>
+          <p style="font-size: 12px; color: var(--text-muted); line-height: 1.4;">
+            Includes free digital pre-production proof, expert vector art verification, and standard 5-day rush production guarantee. Free shipping on this order!
+          </p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" id="btn-download-pdf">
+          <span class="material-symbols-outlined" style="margin-right: 4px;">picture_as_pdf</span>
+          Download PDF Spec
+        </button>
+        <button class="btn-proceed-proof" id="btn-approve-order" style="width: auto; padding: 12px 28px;">
+          <span>Approve & Add to Cart</span>
+          <span class="material-symbols-outlined">check_circle</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Application Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
