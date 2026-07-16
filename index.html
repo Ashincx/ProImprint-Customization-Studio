@@ -36,6 +36,10 @@
       <a href="#" class="header-nav-link" id="nav-pricing">Wholesale Tiers</a>
       <a href="#" class="header-nav-link" id="nav-proofs">Saved Proofs (0)</a>
       <a href="#" class="header-nav-link" id="nav-specs">Product Spec Sheet</a>
+      <a href="#" class="header-nav-link promo-budget-trigger" id="nav-promo-budget" style="display: flex; align-items: center; gap: 4px; color: var(--success-green); font-weight: 700;">
+        <span class="material-symbols-outlined" style="font-size: 16px;">savings</span>
+        Promo Budget Tool
+      </a>
     </nav>
 
     <div class="header-actions">
@@ -607,6 +611,94 @@
           <span>Approve & Add to Cart</span>
           <span class="material-symbols-outlined">check_circle</span>
         </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       4. Maximize Your Promo Spend Instantly (Figma Design 2026 Popup)
+       ====================================================================== -->
+  <div class="promo-modal-overlay open" id="promo-budget-modal" role="dialog" aria-modal="true" aria-labelledby="promo-modal-title">
+    <div class="promo-modal-content">
+      <button class="btn-close-promo" id="btn-close-promo" aria-label="Close Promo Modal">
+        <span>X</span>
+      </button>
+      
+      <div class="promo-modal-grid">
+        <!-- Left Content Section -->
+        <div class="promo-modal-left">
+          <div>
+            <h2 id="promo-modal-title" class="promo-modal-headline">
+              Maximize Your<br>Promo Spend Instantly
+            </h2>
+            <p class="promo-modal-subheadline">
+              Enter your total spend and quantity we'll<br>show the smartest options available
+            </p>
+          </div>
+          
+          <!-- Interactive Budget Slider & Controls -->
+          <div class="promo-budget-controls">
+            <label class="promo-slider-label" for="budget-range-slider">Total Budget</label>
+            <div class="promo-slider-track-container">
+              <input type="range" id="budget-range-slider" class="promo-range-slider" min="100" max="10000" step="50" value="100">
+              <div class="promo-slider-fill" id="budget-slider-fill" style="width: 0%;"></div>
+            </div>
+            
+            <div class="promo-inputs-row">
+              <div class="promo-input-group">
+                <label class="promo-input-label" for="budget-amount-input">Amount</label>
+                <div class="promo-input-box">
+                  <span class="promo-input-prefix">$</span>
+                  <input type="number" id="budget-amount-input" class="promo-num-input" value="100" min="50" max="50000" step="10">
+                </div>
+              </div>
+              
+              <div class="promo-input-group">
+                <label class="promo-input-label" for="budget-qty-input">Quantity</label>
+                <div class="promo-input-box">
+                  <input type="number" id="budget-qty-input" class="promo-num-input" value="250" min="25" max="100000" step="25">
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Show Smart Picks Action Button -->
+          <button class="btn-show-smart-picks" id="btn-show-smart-picks">
+            Show Smart Picks
+          </button>
+          
+          <!-- Bullet Features List -->
+          <ul class="promo-features-list">
+            <li>
+              <span class="promo-bullet-dot"></span>
+              <span>Free artwork proof within 2 Hours</span>
+            </li>
+            <li>
+              <span class="promo-bullet-dot"></span>
+              <span>Used by 200,000+ US customers</span>
+            </li>
+            <li>
+              <span class="promo-bullet-dot"></span>
+              <span><a href="#" class="promo-blue-link">Free Setup</a> and <a href="#" class="promo-blue-link">Free Shipping</a> on select items</span>
+            </li>
+            <li>
+              <span class="promo-bullet-dot"></span>
+              <span>Fast shipping across the US</span>
+            </li>
+          </ul>
+          
+          <!-- Bottom Links -->
+          <div class="promo-modal-footer-links">
+            <a href="#" class="promo-bottom-link" id="link-under-1">Under$1 Promos</a>
+            <span class="promo-footer-divider">|</span>
+            <a href="#" class="promo-bottom-link" id="link-best-selling">Best Selling Promos</a>
+          </div>
+        </div>
+        
+        <!-- Right Product Bundle Showcase Section -->
+        <div class="promo-modal-right">
+          <img src="promo-products-bundle.png" alt="Promo Products Showcase Bundle" class="promo-showcase-img">
+        </div>
       </div>
     </div>
   </div>

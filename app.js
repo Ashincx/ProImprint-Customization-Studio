@@ -523,6 +523,98 @@ document.addEventListener('DOMContentLoaded', () => {
     showToast('Design Support: Ticket created! A free graphic artist will email you in 15 minutes.', 'support_agent');
   });
 
+  // --- PROMO BUDGET TOOL (Figma 2026 Popup Design) ---
+  const promoModal = document.getElementById('promo-budget-modal');
+  const btnClosePromo = document.getElementById('btn-close-promo');
+  const navPromoBudget = document.getElementById('nav-promo-budget');
+  const budgetRangeSlider = document.getElementById('budget-range-slider');
+  const budgetSliderFill = document.getElementById('budget-slider-fill');
+  const budgetAmountInput = document.getElementById('budget-amount-input');
+  const budgetQtyInput = document.getElementById('budget-qty-input');
+  const btnShowSmartPicks = document.getElementById('btn-show-smart-picks');
+
+  function updatePromoBudgetVisuals(amount) {
+    if (!budgetRangeSlider) return;
+    const min = parseFloat(budgetRangeSlider.min) || 100;
+    const max = parseFloat(budgetRangeSlider.max) || 10000;
+    const pct = Math.max(0, Math.min(100, ((amount - min) / (max - min)) * 100));
+    if (budgetSliderFill) budgetSliderFill.style.width = `${pct}%`;
+  }
+
+  if (budgetRangeSlider && budgetAmountInput && budgetQtyInput) {
+    // Initial sync
+    updatePromoBudgetVisuals(parseFloat(budgetRangeSlider.value));
+
+    budgetRangeSlider.addEventListener('input', (e) => {
+      const val = parseFloat(e.target.value);
+      budgetAmountInput.value = val;
+      updatePromoBudgetVisuals(val);
+      // Auto estimate recommended wholesale quantity based on budget
+      const estQty = Math.max(25, Math.round((val / state.unitPrice) / 5) * 5);
+      budgetQtyInput.value = estQty;
+    });
+
+    budgetAmountInput.addEventListener('input', (e) => {
+      let val = parseFloat(e.target.value) || 0;
+      if (val > parseFloat(budgetRangeSlider.max)) val = parseFloat(budgetRangeSlider.max);
+      budgetRangeSlider.value = Math.max(parseFloat(budgetRangeSlider.min), val);
+      updatePromoBudgetVisuals(val);
+      const estQty = Math.max(25, Math.round((val / state.unitPrice) / 5) * 5);
+      budgetQtyInput.value = estQty;
+    });
+
+    budgetQtyInput.addEventListener('input', (e) => {
+      const qtyVal = parseInt(e.target.value, 10) || 25;
+      const estBudget = Math.round(qtyVal * state.unitPrice);
+      budgetAmountInput.value = estBudget;
+      budgetRangeSlider.value = Math.min(parseFloat(budgetRangeSlider.max), Math.max(parseFloat(budgetRangeSlider.min), estBudget));
+      updatePromoBudgetVisuals(estBudget);
+    });
+  }
+
+  function openPromoBudgetModal() {
+    if (promoModal) promoModal.classList.add('open');
+  }
+
+  function closePromoBudgetModal() {
+    if (promoModal) promoModal.classList.remove('open');
+  }
+
+  if (navPromoBudget) {
+    navPromoBudget.addEventListener('click', (e) => {
+      e.preventDefault();
+      openPromoBudgetModal();
+    });
+  }
+
+  if (btnClosePromo) {
+    btnClosePromo.addEventListener('click', closePromoBudgetModal);
+  }
+
+  if (promoModal) {
+    promoModal.addEventListener('click', (e) => {
+      if (e.target === promoModal) closePromoBudgetModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && promoModal.classList.contains('open')) {
+        closePromoBudgetModal();
+      }
+    });
+  }
+
+  if (btnShowSmartPicks) {
+    btnShowSmartPicks.addEventListener('click', () => {
+      const amt = budgetAmountInput ? budgetAmountInput.value : '100';
+      const qty = budgetQtyInput ? parseInt(budgetQtyInput.value, 10) : 250;
+      closePromoBudgetModal();
+      if (qtyInput) qtyInput.value = qty;
+      state.quantity = qty;
+      updatePricing();
+      showToast(`Smart Picks applied for $${amt} budget! (${qty} units loaded)`, 'verified');
+    });
+  }
+
   // --- INITIALIZATION ---
   renderTextPreview();
   updatePricing();
